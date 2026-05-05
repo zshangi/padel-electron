@@ -1,0 +1,277 @@
+/* PersianCalendar.css */
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE & Edge */
+}
+
+@font-face {
+  font-family: 'vazirmatn';
+  src: url('./fonts/vazirmatn/Vazirmatn-Regular.woff2') format('truetype');
+}
+@font-face {
+  font-family: 'varizmatnBold';
+  font-weight: bold;
+  src: url('./fonts/vazirmatn/Vazirmatn-Bold.woff2') format('truetype');
+}
+
+@font-face {
+  font-family: "RobotoLight";
+  src: local("RobotoLight"),
+   url("./fonts/Roboto/Roboto-Light.ttf") format("truetype");
+ }
+.body-farsi {
+  font-family: 'vazirmatn', sans-serif;
+}
+.body-farsi-bold {
+  font-family: 'varizmatnBold', sans-serif;
+}
+.body-En {
+  font-family: 'RobotoLight', sans-serif;
+}
+.customShadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+body{
+    font-family: 'vazirmatn', sans-serif;
+}
+.persian-calendar {
+  font-family: 'vazirmatn',  sans-serif;
+  font-size: 10px;
+  direction: rtl;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.calendar-container, .time-slots-container, .confirmation-container {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.calendar-header button {
+  background: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.week-day {
+  padding: 1px;
+  border: 1px solid #fff;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding-right: 15px;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.calendar-day {
+  font-size: 10px;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #cdcccc;
+   background-color: #fff;
+  color: #c8c4c4;
+
+}
+.calendar-day.selectable {
+  background-color: rgba(185, 237, 0, 0.2);
+  color: #719100; 
+}
+
+.calendar-day.selectable:hover {
+  background-color: #B9ED00;
+  opacity: 1;
+}
+
+.calendar-day.selected {
+  background-color: #B9ED00;
+  color: #A6A6A6;
+  font-weight: 900;
+}
+
+.calendar-day.other-month {
+  /* color: #ccc; */
+  cursor: default;
+}
+
+.calendar-day.reserved {
+  background-color: #eeeeee;
+  border:0.2px solid #a6a6a6;
+  color: #898989;
+  cursor: not-allowed;
+}
+
+.time-slots-container {
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.time-slots-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  
+}
+
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+}
+
+.time-slot {
+  padding: 7px;
+  background-color: #f6f6f6;
+  border: 1px solid #f6f6f6;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: #000;
+
+}
+
+.time-slot:hover {
+  background-color: #d6fe3d;
+  border: 1px solid #d6fe3d;
+  color: #000;
+}
+
+.time-slot.selected {
+  background-color: #d6fe3d;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time-slot.selected::after {
+  content: "بعدی";
+  background-color: white;
+  color: #d6fe3d;
+  padding: 4px 4px;
+  border-radius: 4px;
+  font-size: 10px;
+}
+
+.confirmation-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.confirmation-header h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.selected-info {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.date-info, .time-info {
+  font-weight: bold;
+  margin: 5px 0;
+  color: #d6fe3d;
+}
+
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  direction: ltr;
+  text-align: left;
+  width: 260px;
+}
+
+.submit-button {
+  background-color: #d6fe3d;
+  color: #000;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+
+}
+
+.submit-button:hover {
+  background-color: #ccc;
+}

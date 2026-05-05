@@ -1,0 +1,30 @@
+{
+  "name": "23rd-padel-electron",
+  "version": "1.0.0",
+  "description": "23rd Padel offline desktop app with Electron, Django, React, and SQLite",
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "build:frontend": "cd frontend && CI=false npm run build",
+    "electron": "npm run build:frontend && electron .",
+    "electron:dev": "npm run build:frontend && ELECTRON_OPEN_DEVTOOLS=1 electron .",
+    "build:backend:mac": "cd backend && PYINSTALLER_CONFIG_DIR=/private/tmp/23rd-padel-pyinstaller-cache python3 -m PyInstaller --noconfirm --clean --distpath dist --workpath build/pyinstaller 23rd-padel-backend.spec",
+    "start:backend": "cd backend && DATA_USE_SQLITE=1 python3 manage.py runserver 127.0.0.1:8000",
+    "migrate": "cd backend && DATA_USE_SQLITE=1 python3 manage.py migrate",
+    "bootstrap": "cd backend && DATA_USE_SQLITE=1 python3 manage.py bootstrap_offline",
+    "start": "electron-forge start",
+    "package": "npm run build:frontend && electron-forge package",
+    "package:mac": "npm run build:frontend && npm run build:backend:mac && electron-forge package --platform=darwin",
+    "make": "npm run build:frontend && electron-forge make",
+    "make:dmg": "npm run build:frontend && npm run build:backend:mac && electron-forge make --platform=darwin --targets=@electron-forge/maker-dmg"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.11.1",
+    "@electron-forge/maker-deb": "^7.11.1",
+    "@electron-forge/maker-dmg": "^7.11.1",
+    "@electron-forge/maker-rpm": "^7.11.1",
+    "@electron-forge/maker-squirrel": "^7.11.1",
+    "@electron-forge/maker-zip": "^7.11.1",
+    "electron": "^28.0.0"
+  }
+}

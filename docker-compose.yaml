@@ -1,0 +1,66 @@
+
+services:
+  backend_internal:
+    build: ./backend
+    entrypoint: bash entrypoint_internal.sh
+    volumes:
+      - ./backend/:/usr/src/app/
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    env_file:
+      - ./env.dev/env.web_dev
+    environment:
+      - DJANGO_DEBUG=1
+    depends_on:
+      - db_auth
+      - db_data
+
+  backend:
+    build: ./backend
+    entrypoint: bash entrypoint.sh
+    expose:
+      - 8000
+    env_file:
+      - ./env.dev/env.web_dev
+    environment:
+      - DJANGO_DEBUG=0
+    depends_on:
+      - db_auth
+      - db_data
+
+  frontend:
+    build: ./frontend 
+    volumes:
+      - node_modules:/app/node_modules/
+      - ./conf/nginx/app_server.conf:/etc/nginx/conf.d/default.conf
+    expose:
+      - 80
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+
+  db_auth:
+    image: postgres:16.0-alpine
+    volumes:
+      - postgres_auth:/var/lib/postgresql/data/
+    env_file:
+      - ./env.dev/env.db_auth
+    expose:
+      - 5432
+
+  db_data:
+    image: postgres:16.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./env.dev/env.db_data
+    expose:
+      - 5432
+
+volumes:
+  node_modules:
+  postgres_auth:
+  postgres_data:
