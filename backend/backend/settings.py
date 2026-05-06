@@ -12,9 +12,22 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Check if we are running as a PyInstaller bundle
+IF_FROZEN = getattr(sys, 'frozen', False)
+
+if IF_FROZEN:
+    # Path to the folder where the executable lives
+    BASE_DIR = Path(sys._MEIPASS) 
+else:
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+#BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -22,13 +35,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "electron-offline-development-secret")
-DEBUG = int(os.environ.get("DJANGO_DEBUG", default=1))
+DEBUG = not IF_FROZEN # Run in debug mode if not running with PyInstaller 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 
-_allowed_hosts = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost 127.0.0.1")
-ALLOWED_HOSTS = [host for host in _allowed_hosts.split(" ") if host]
+#_allowed_hosts = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost 127.0.0.1")
+ALLOWED_HOSTS = ALLOWED_HOSTS = ['localhost', '127.0.0.1']#[host for host in _allowed_hosts.split(" ") if host]
 
 # Application definition
 
@@ -89,6 +102,16 @@ if _use_postgres:
             "PASSWORD": os.environ.get("DJANGO_SQL_PASSWORD"),
             "HOST": os.environ.get("DJANGO_SQL_HOST"),
             "PORT": os.environ.get("DJANGO_SQL_PORT", "5432"),
+        }
+    }
+elif IF_FROZEN :
+    # On Windows: AppData/Roaming/YourApp
+    # On Mac: Library/Application Support/YourApp
+    db_path = os.path.join(os.environ.get('APPDATA', os.path.expanduser('~')), 'db.sqlite3')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': db_path,
         }
     }
 else:
