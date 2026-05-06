@@ -41,14 +41,14 @@ const Home = () => {
                         </div>
                         <div className='flex space-x-[5px]  space-x-reverse justify-center w-full h-[120px]'>
                             <div className='w-[80px] h-[80px] rounded-full border border-1 border-[#f6f6f6]'>
-                                <img src={'/images/tennis-2.jpg'} className='rounded-full' />
+                                <img src={'./images/tennis-2.jpg'} className='rounded-full' />
                             </div>
                             <div className='w-[80px] h-[80px] rounded-full border border-1 border-[#f6f6f6]'>
-                                <img src={'/images/tennis-3.jpg'} className='rounded-full' />
+                                <img src={'./images/tennis-3.jpg'} className='rounded-full' />
 
                             </div>
                             <div className='w-[80px] h-[80px] rounded-full border border-1 border-[#f6f6f6]'>
-                                <img src={'/images/tennis-1.jpg'} className='rounded-full' />
+                                <img src={'./images/tennis-1.jpg'} className='rounded-full' />
 
                             </div>
 
@@ -67,7 +67,7 @@ const Home = () => {
                     <div className=' flex space-x-[10px] space-x-reverse rounded-[12px] justify-center text-[15px] text-[#000] items-center w-full drop-shadow-[0_4px_6px_rgba(0,0,0,0.1)] h-[150px] border-t-[1px] border-[#f6f6f6] bg-[#fff]'>
       <div className='flex float-right justify-start items-center w-[150px] '>
                             <a href='https://maps.app.goo.gl/nvKjTFNWJKTP4tC49'>
-                            <img src={'/images/map.png'} className='w-full h-auto rounded-md' />
+                            <img src={'./images/map.png'} className='w-full h-auto rounded-md' />
                             </a>
                         </div>
                         <div className='flex  flex-col space-y-[10px] float-left w-[150px] text-right text-xs '>

@@ -41,7 +41,7 @@ DEBUG = not IF_FROZEN # Run in debug mode if not running with PyInstaller
 #DEBUG = True
 
 #_allowed_hosts = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost 127.0.0.1")
-ALLOWED_HOSTS = ALLOWED_HOSTS = ['localhost', '127.0.0.1']#[host for host in _allowed_hosts.split(" ") if host]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']#[host for host in _allowed_hosts.split(" ") if host]
 
 # Application definition
 
@@ -52,13 +52,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
-    'api.authenticate',
+    'api.authenticate'
 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -66,6 +68,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# 4. For local standalone apps, this is the safest and easiest setting
+CORS_ALLOW_ALL_ORIGINS = True 
+
+# 5. Since you are using Token/JWT, allow the Authorization header
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
 ]
 
 ROOT_URLCONF = 'backend.urls'

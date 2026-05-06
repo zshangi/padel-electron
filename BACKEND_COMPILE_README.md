@@ -13,11 +13,11 @@
 4. Run this command to create a binary for the backend server (You should be in the backend folder):
     - MAC 
     ```
-    pyinstaller --noconfirm --onedir --console --name "padel-backend" --add-data "backend:backend" run_backend.py
+    pyinstaller --noconfirm --onedir --console --name "padel-backend" --add-data "api:api" --add-data "backend:backend" --add-data "config.py:." --add-data "utils:utils" run_backend.py
+    pyinstaller --noconfirm --onedir --console --name "padel-backend" --add-data "api:api" --add-data "backend:backend" --add-data "utils:utils" --add-data "config.py:." run_backend.py
     ```
 5. This would create a file in ./dist/padel-backend called padel-backend which is self contained and run the backend.
 
-# I have made some modifications to the settings.py file 
 
 
 

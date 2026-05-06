@@ -1,5 +1,9 @@
 import os
 import sys
+
+import easydict
+
+
 from waitress import serve
 from django.core.wsgi import get_wsgi_application
 

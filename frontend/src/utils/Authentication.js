@@ -11,6 +11,8 @@ export class Authentication
         {
             this.auth = null
         }
+
+        this.API_BASE_URL = "http://127.0.0.1:8000"
     }
     
     async has_token()
@@ -50,7 +52,7 @@ export class Authentication
             body: JSON.stringify(credentials)
         };
     
-        const response = await fetch('/api/auth/token/obtain/', requestOptions);
+        const response = await fetch(`${this.API_BASE_URL}/api/auth/token/obtain/`, requestOptions);
         const success = response.status === 200;
     
         if (!success) return false;
@@ -79,7 +81,7 @@ export class Authentication
             body: JSON.stringify({token: this.auth.accessToken})
         };
 
-        var response = await fetch("/api/auth/token/verify/", requestOptions )
+        var response = await fetch(`${this.API_BASE_URL}/api/auth/token/verify/`, requestOptions )
         let success = response.status === 200
 
         if( !success )
@@ -98,7 +100,7 @@ export class Authentication
             body: JSON.stringify({refresh: this.auth.refreshToken})
         };
 
-        var response = await fetch("/api/auth/token/refresh/", requestOptions )
+        var response = await fetch(`${this.API_BASE_URL}/api/auth/token/refresh/`, requestOptions )
         let success = response.status === 200
 
         if( !success )
@@ -133,7 +135,7 @@ export class Authentication
             body: JSON.stringify(body)
         };
 
-        var response = await fetch(url, requestOptions)
+        var response = await fetch(`${this.API_BASE_URL}${url}`, requestOptions)
         /*let success = response.status === 200
 
         if( !success )
@@ -157,7 +159,7 @@ export class Authentication
             headers: headers,
         };
 
-        var response = await fetch(url, requestOptions)
+        var response = await fetch(`${this.API_BASE_URL}${url}`, requestOptions)
         var data = await response.json()
         return data
     }

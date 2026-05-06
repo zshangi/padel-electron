@@ -74,7 +74,7 @@ export default function Login() {
             style={{ direction: 'rtl' }}
         >
             <div className='flex flex-col w-full space-y-[20px] justify-start items-center'>
-        <img src={'/images/paledvand.png'} className="w-[250px] h-auto" />
+        <img src={'./images/paledvand.png'} className="w-[250px] h-auto" />
                     <form onSubmit={submit} className='flex flex-col space-y-[10px] w-full items-center h-fit '>
                         <Input
                             label="نام کاربری/شماره تلفن همراه"

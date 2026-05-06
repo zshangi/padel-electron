@@ -2,6 +2,10 @@ module.exports = {
   packagerConfig: {
     asar: false,
     name: "23rd Padel Offline",
+    extraResource: [
+      './backend/dist/padel-backend',
+      './frontend/build'
+    ],
     ignore: [
       /^\/\.idea(\/|$)/,
       /^\/\.git(\/|$)/,

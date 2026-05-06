@@ -101,8 +101,8 @@ const Header = () => {
                   <img
                     src={
                       selectedItem === item.key
-                        ? `/images/${item.back_img}`
-                        : '/images/back-menu-item.svg'
+                        ? `./images/${item.back_img}`
+                        : './images/back-menu-item.svg'
                     }
                     className="w-[55px]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     alt=""
@@ -110,7 +110,7 @@ const Header = () => {
 
                   {/* Icon image */}
                   <img
-                    src={`/images/${item.image}`}
+                    src={`./images/${item.image}`}
                     className="absolute top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2"
                     alt={item.label}
                   />
