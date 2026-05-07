@@ -17,11 +17,11 @@ const Home = () => {
 
 
                 <div className='flex w-full   h-[400px]  mb-[20px]  justify-center  items-start  '>
-                    <img src='/images/contact-1.png'/>
+                    <img src='./images/contact-1.png'/>
                 </div>
 
                     <div className='flex w-full shadow-md mt-[20px]   h-[200px]  p-[10px]   justify-center  items-start  '>
-                    <img src='/images/contact-2.png ' className='rounded-[4px]'/>
+                    <img src='./images/contact-2.png ' className='rounded-[4px]'/>
                 </div>
                       <div className='flex  flex-col space-y-[10px] justify-center  w-full text-center text-xs '>
                             <span className='text-[14px] text-[#000] font-extrabold'>پدل وند</span>

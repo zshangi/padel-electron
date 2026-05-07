@@ -52,7 +52,7 @@ const Header = () => {
             color={'#d6fe3d'}
             size={30}
           />
-          <img onClick={() => navigate('/')} src={'/images/padelvand-logo.svg'} className='w-[123px] h-auto cursor-pointer' />
+          <img onClick={() => navigate('/')} src={'./images/padelvand-logo.svg'} className='w-[123px] h-auto cursor-pointer' />
           <CiLogin color={'#d6fe3d'} size={30} />
         </div>
   {showMenu && (

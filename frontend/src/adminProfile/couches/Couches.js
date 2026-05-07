@@ -101,12 +101,12 @@ const AdminCouches = () => {
                             <div className="flex flex-col items-center relative">
                                 <button onClick={() => [setShowMonthlyCalender(true), setShowCouches(false), setSelectedTime('')]} className="relative w-[85px] h-[85px] rounded-full border cursor-pointer text-[11px] bg-white focus:outline-none">
                                     <img
-                                        src={`${showMonthlyCalender ? '/images/couch-selected-menu-item.svg' : '/images/back-menu-item.svg'}`}
+                                        src={`${showMonthlyCalender ? './images/couch-selected-menu-item.svg' : './images/back-menu-item.svg'}`}
                                         className="w-[55px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                         alt=""
                                     />
                                     <img
-                                        src={`/images/testtop.svg`}
+                                        src={`./images/testtop.svg`}
                                         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                     />
                                 </button>
@@ -121,12 +121,12 @@ const AdminCouches = () => {
                             <div className="flex flex-col items-center relative">
                                 <button onClick={() => [setShowMonthlyCalender(false), setShowCouches(true)]} className="relative w-[85px] h-[85px] rounded-full border cursor-pointer text-[11px] bg-white focus:outline-none">
                                     <img
-                                        src={`${showCouches ? '/images/couch-selected-menu-item.svg' : '/images/back-menu-item.svg'}`}
+                                        src={`${showCouches ? './images/couch-selected-menu-item.svg' : './images/back-menu-item.svg'}`}
                                         className="w-[55px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                         alt=""
                                     />
                                     <img
-                                        src={`/images/reserve-couch-icon.svg`}
+                                        src={`./images/reserve-couch-icon.svg`}
                                         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                     />
                                 </button>

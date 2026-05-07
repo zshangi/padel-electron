@@ -52,12 +52,12 @@ const Header = () => {
       <div className='flex flex-col w-full max-w-[393px] justify-start bg-[#1e1e1e]'>
         <div className='flex w-full h-[70px] justify-between items-center px-[30px] bg-[#1e1e1e]'>
          
-          <img src={showMenu ? '/images/menu-open.svg' : '/images/menu-close.svg'}
+          <img src={showMenu ? './images/menu-open.svg' : './images/menu-close.svg'}
             className="cursor-pointer"
             onClick={() => setShowMenu(!showMenu)}
           
           />
-          <img onClick={() => navigate('/')} src={'/images/padelvand-logo.svg'} className='w-[123px] h-auto cursor-pointer' />
+          <img onClick={() => navigate('/')} src={'./images/padelvand-logo.svg'} className='w-[123px] h-auto cursor-pointer' />
           <CiLogin onClick={handleLogout} color={'#d6fe3d'} size={30} />        </div>
   {showMenu && (
           <div className='flex space-x-[30px] space-x-reverse w-full h-[50px] justify-center items-start px-[20px] bg-[#1e1e1e] body-farsi text-[#d6fe3d] relative'>
@@ -106,8 +106,8 @@ const Header = () => {
                   <img
                     src={
                       selectedItem === item.key
-                        ? `/images/${item.back_img}`
-                        : '/images/back-menu-item.svg'
+                        ? `./images/${item.back_img}`
+                        : './images/back-menu-item.svg'
                     }
                     className="w-[55px]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     alt=""
@@ -115,7 +115,7 @@ const Header = () => {
 
                   {/* Icon image */}
                   <img
-                    src={`/images/${item.image}`}
+                    src={`./images/${item.image}`}
                     className="absolute top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2"
                     alt={item.label}
                   />

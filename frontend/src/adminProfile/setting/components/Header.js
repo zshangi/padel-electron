@@ -12,12 +12,12 @@ const Header = ({showsetting,setshowsetting,showcategory,setshowcategory}) => {
                             <div className="flex flex-col items-center relative">
                                 <button onClick={() => [setshowsetting(true), setshowcategory(false)]} className="relative w-[85px] h-[85px] rounded-full border-[0.5px] cursor-pointer text-[11px] bg-white focus:outline-none">
                                     <img
-                                        src={`${showsetting ? '/images/back-menu-purple.svg' : '/images/back-menu-item.svg'}`}
+                                        src={`${showsetting ? './images/back-menu-purple.svg' : './images/back-menu-item.svg'}`}
                                         className="w-[55px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                         alt=""
                                     />
                                     <img
-                                        src={`/images/admin/setting-icon-setting.svg`}
+                                        src={`./images/admin/setting-icon-setting.svg`}
                                         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                     />
                                 </button>
@@ -33,12 +33,12 @@ const Header = ({showsetting,setshowsetting,showcategory,setshowcategory}) => {
                             <div className="flex flex-col items-center relative">
                                 <button onClick={() => [setshowsetting(false), setshowcategory(true)]} className="relative w-[85px] h-[85px] rounded-full border-[0.5px] cursor-pointer text-[11px] bg-white focus:outline-none">
                                     <img
-                                        src={`${showcategory ? '/images/back-menu-purple.svg' : '/images/back-menu-item.svg'}`}
+                                        src={`${showcategory ? './images/back-menu-purple.svg' : './images/back-menu-item.svg'}`}
                                         className="w-[55px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                         alt=""
                                     />
                                     <img
-                                        src={`/images/admin/setting-icon-category.svg`}
+                                        src={`./images/admin/setting-icon-category.svg`}
                                         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                     />
                                 </button>

@@ -13,8 +13,7 @@ pip install -r requirements.txt
 
 2. Compile the server app 
 ```
-pyinstaller --noconfirm --onedir --console --name "padel-backend" \
---collect-submodules api \
+pyinstaller --noconfirm --onedir --console --name "padel-backend" --add-data "api:api" --add-data "backend:backend" --add-data "utils:utils" --add-data "config.py:." run_backend.py
 --add-data "api:api" \
 --add-data "backend:backend" \ 
 --add-data "utils:utils" \ 

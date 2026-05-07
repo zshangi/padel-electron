@@ -221,7 +221,7 @@ const Match = () => {
                 {sessionsToShow.map((session) => (
                   <div key={session.id} className="flex w-[350px] items-center rounded-lg shadow-md h-[100px] p-[20px] bg-white hover:shadow-lg transition-shadow">
                     <div className="w-[100px]">
-                      <img src={`/images/${session.image}`} className="w-[62px] h-auto rounded-full object-cover" alt={session.name} />
+                      <img src={`./images/${session.image}`} className="w-[62px] h-auto rounded-full object-cover" alt={session.name} />
                     </div>
                     <div className="flex flex-col w-full h-full justify-center space-y-1 px-2 text-[9px]">
                       <span className="font-bold">{session.name}</span>

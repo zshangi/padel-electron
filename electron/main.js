@@ -105,4 +105,3 @@ app.on('will-quit', () => {
         backendProcess.kill();
     }
 });
-

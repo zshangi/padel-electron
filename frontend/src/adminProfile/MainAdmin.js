@@ -67,7 +67,7 @@ const Main = ({ children }) => {
                             style={{ color: selectedItem === item.key ? '#fff' : '#A9A9A9' }}
                         >
                             <img
-                                src={`/images/admin/${item.image}`}
+                                src={`./images/admin/${item.image}`}
                                 alt=""
                                 className={isCollapsed ? 'w-5 h-5' : 'w-5 h-5'}
                             />
