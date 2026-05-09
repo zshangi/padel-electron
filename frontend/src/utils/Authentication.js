@@ -195,6 +195,7 @@ export async function verify()
 
 export async function backendAccessGet( url, headers={} )
 {
+    url = url.startsWith("/") ? url : `/${url}`;
     let auth = new Authentication()
     if( ! (await auth.has_token()) )
     {
@@ -207,6 +208,7 @@ export async function backendAccessGet( url, headers={} )
 
 export async function backendAccessPost( url, body={}, headers={} )
 {
+    url = url.startsWith("/") ? url : `/${url}`;
     let auth = new Authentication()
     if( !(await auth.has_token()) )
     {
@@ -214,11 +216,13 @@ export async function backendAccessPost( url, body={}, headers={} )
     }
 
     var res = await auth.post( url, body, headers )
+    console.log(res)
     return res
 }
 
 export async function backendAccessPostNoAuth( url, data={}, headers={} )
 {
+    url = url.startsWith("/") ? url : `/${url}`;
     let auth = new Authentication()
     var res = await auth.post( url, data, headers )
     return res

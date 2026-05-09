@@ -22,7 +22,7 @@ class config :
         cfg["password"] = os.environ.get("DATA_SQL_PASSWORD")
 
         return cfg
-
+ 
     def _sqlite_path(self):
         return os.environ.get("DATA_SQLITE_PATH", str(BASE_DIR / "data.sqlite3"))
 

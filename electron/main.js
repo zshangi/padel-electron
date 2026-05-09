@@ -1,6 +1,7 @@
 // 1. Add BrowserWindow to the import here!
 const { app, BrowserWindow } = require('electron'); 
 const path = require('path');
+const os = require('os');
 const { spawn } = require('child_process');
 
 let backendProcess = null;
@@ -31,7 +32,7 @@ function startBackend() {
     backendProcess = spawn(backendPath, [activePort], {
         cwd: path.dirname(backendPath),
         shell: false,
-        env: { ...process.env, PYTHONUNBUFFERED: "1" }
+        env: { ...process.env, PYTHONUNBUFFERED: "1", DATA_SQLITE_PATH: path.join(os.homedir(), 'data.sqlite3') }
     });
 
     backendProcess.stdout.on('data', (data) => console.log(`Django: ${data}`));

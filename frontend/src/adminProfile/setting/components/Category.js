@@ -115,9 +115,9 @@ const Category = () => {
     setLoading(true);
     try {
       const [categoriesResponse, subcategoriesResponse, contentResponse] = await Promise.all([
-        backendAccessGet("api/category/fetch/"),
-        backendAccessGet("api/subcategory/fetch/"),
-        backendAccessGet("api/categorycontent/fetch/"),
+        backendAccessGet("/api/category/fetch/"),
+        backendAccessGet("/api/subcategory/fetch/"),
+        backendAccessGet("/api/categorycontent/fetch/"),
       ]);
 
       setCategory(categoriesResponse?.categories || []);
@@ -321,7 +321,7 @@ const Category = () => {
         requestData.categorycontent = currentContent?.categorycontent || getEmptyValues();
       }
 
-      await backendAccessPost("api/categorycontent/add_or_update/", requestData);
+      await backendAccessPost("/api/categorycontent/add_or_update/", requestData);
 
       // ✅ refresh so UI always reflects saved data
       await refetchAll();
@@ -338,7 +338,7 @@ const Category = () => {
 
     setActionLoading(true);
     try {
-      await backendAccessPost("api/category/add/", {
+      await backendAccessPost("/api/category/add/", {
         name: namecategory,
         maincategory_id: toNum(selectedMainCategory.value),
       });
@@ -351,7 +351,7 @@ const Category = () => {
       );
 
       if (newCategory) {
-        await backendAccessPost("api/categorycontent/add_or_update/", {
+        await backendAccessPost("/api/categorycontent/add_or_update/", {
           maincategory_id: toTextId(selectedMainCategory.value),
           category_id: toTextId(newCategory.id),
           categorycontent: mergeContentValues(addCategoryContentValues),
@@ -376,12 +376,12 @@ const Category = () => {
 
     setActionLoading(true);
     try {
-      await backendAccessPost("api/category/update/", {
+      await backendAccessPost("/api/category/update/", {
         id: toNum(editingCategory.id),
         name: namecategory,
       });
       if (selectedMainCategory) {
-        await backendAccessPost("api/categorycontent/add_or_update/", {
+        await backendAccessPost("/api/categorycontent/add_or_update/", {
           maincategory_id: toTextId(selectedMainCategory.value),
           category_id: toTextId(editingCategory.id),
           categorycontent: mergeContentValues(editCategoryContentValues),
@@ -403,7 +403,7 @@ const Category = () => {
 
     setActionLoading(true);
     try {
-      await backendAccessPost("api/subcategory/add/", {
+      await backendAccessPost("/api/subcategory/add/", {
         name: namesubcategory,
         category_id: toNum(selectedCategory.id),
       });
@@ -415,7 +415,7 @@ const Category = () => {
       );
 
       if (newSubcategory) {
-        await backendAccessPost("api/categorycontent/add_or_update/", {
+        await backendAccessPost("/api/categorycontent/add_or_update/", {
           maincategory_id: toTextId(selectedMainCategory.value),
           category_id: toTextId(selectedCategory.id),
           subcategory_id: toNum(newSubcategory.id),
@@ -440,14 +440,14 @@ const Category = () => {
 
     setActionLoading(true);
     try {
-      await backendAccessPost("api/subcategory/update/", {
+      await backendAccessPost("/api/subcategory/update/", {
         id: toNum(editingSubcategory.id),
         name: namesubcategory,
       });
       if (selectedMainCategory) {
         const categoryId = editingSubcategory.category_id || selectedCategory?.id;
         if (categoryId) {
-          await backendAccessPost("api/categorycontent/add_or_update/", {
+          await backendAccessPost("/api/categorycontent/add_or_update/", {
             maincategory_id: toTextId(selectedMainCategory.value),
             category_id: toTextId(categoryId),
             subcategory_id: toNum(editingSubcategory.id),
@@ -471,7 +471,7 @@ const Category = () => {
 
     setActionLoading(true);
     try {
-      await backendAccessPost("api/category/delete/", { id: toNum(itemToDelete.id) });
+      await backendAccessPost("/api/category/delete/", { id: toNum(itemToDelete.id) });
       await refetchAll();
 
       if (selectedCategory?.id === itemToDelete.id) {
@@ -495,7 +495,7 @@ const Category = () => {
 
     setActionLoading(true);
     try {
-      await backendAccessPost("api/subcategory/delete/", { id: toNum(itemToDelete.id) });
+      await backendAccessPost("/api/subcategory/delete/", { id: toNum(itemToDelete.id) });
 
       // if there is categorycontent entry, remove override for this subcategory too
       if (selectedCategory && selectedMainCategory) {
@@ -508,7 +508,7 @@ const Category = () => {
             (sc) => toNum(sc.subcategory_id) !== toNum(itemToDelete.id)
           );
 
-          await backendAccessPost("api/categorycontent/add_or_update/", {
+          await backendAccessPost("/api/categorycontent/add_or_update/", {
             maincategory_id: toTextId(mId),
             category_id: toTextId(cId),
             categorycontent: baseEntry.categorycontent || getEmptyValues(),
